@@ -1,6 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
-const logger = require('./middleware/customMiddleware');
+const logger = require('./middleware/logger');
 
 const recepieRouter = require('../api/recepies/recepie-router');
 
