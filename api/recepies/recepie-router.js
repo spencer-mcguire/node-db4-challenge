@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Recepies = require('./recepie-model');
+const Recepies = require('../../data/helpers/recepie-model');
 
 const router = express.Router();
 
