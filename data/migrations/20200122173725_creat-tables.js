@@ -1,7 +1,7 @@
 exports.up = function(knex) {
-  knex.schema
-    .createTable('recipe', tbl => {
-      tbl.incrememnts();
+  return knex.schema
+    .createTable('recipes', tbl => {
+      tbl.increments();
 
       tbl
         .string('recipe_name', 128)
@@ -11,24 +11,24 @@ exports.up = function(knex) {
       tbl.string('steps', 5000);
     })
     .createTable('ingredients', tbl => {
-      tbl.incrememnts();
+      tbl.increments();
 
       tbl.string('ingredient_name').notNullable();
     })
     .createTable('quantities', tbl => {
-      tbl.incrememnts();
+      tbl.increments();
 
       tbl.float('quantity').notNullable();
     })
     .createTable('recipe_ingredient_quantity', tbl => {
-      tbl.incrememnts();
+      tbl.increments();
 
       tbl
         .integer('recipe_id')
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('recipe')
+        .inTable('recipes')
         .onUpdate('CASCADE')
         .onDelete('RESTRICT');
 
@@ -46,7 +46,7 @@ exports.up = function(knex) {
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('quantity')
+        .inTable('quantities')
         .onUpdate('CASCADE')
         .onDelete('RESTRICT');
     });
